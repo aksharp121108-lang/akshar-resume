@@ -12,6 +12,7 @@ A small static site: plain HTML, CSS and a little JavaScript. No build step, no 
 | `academics.html`, `experience.html`, `resume.html`, `contact.html` | The other pages |
 | `404.html` | Page shown for a wrong address (GitHub Pages picks it up automatically) |
 | `style.css` | All the styling. Colours and spacing are at the top |
+| `earth.js` | Draws the turning Earth in the Experience page intro (canvas) |
 | `script.js` | Mobile menu, copy-email buttons, experience filter, count-up numbers, scroll fade-ins, back-to-top button, light/dark mode, F1 scroll car |
 | `logo.png` | Round logo made from your photo, shown top left on every page |
 | `akshar.jpg` | Your portrait. Replace it with another photo of the same name to change it |
@@ -23,7 +24,7 @@ Keep all files in the same folder. `index.html` must stay named exactly that.
 
 ## Intro animations
 
-The home page (opening bell), About page (star chart), Academics page (stardust and astrolabe) and Interests and Goals page (the Odyssey ship) each start with a short intro. They play every time the page opens. Press **Skip intro** to end one. The button at the bottom of those pages turns the intros off or on for that browser.
+The home page (opening bell), About page (star chart), Academics page (stardust and astrolabe) Interests and Goals page (the Odyssey ship) and Experience page (Market & Mindset, a turning planet Earth drawn in `earth.js`) each start with a short intro. They play every time the page opens. Press **Skip intro** to end one. The button at the bottom of those pages turns the intros off or on for that browser.
 
 If you never see an intro, check that you are opening the site through `index.html` or the hosted link, and that the phone is not in a mode that blocks JavaScript.
 

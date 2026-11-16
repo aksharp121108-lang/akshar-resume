@@ -127,7 +127,7 @@
   onScroll();
 
   // Intros play once per page load. Only the visible Skip control ends them early.
-  const lengths = { bell: 5200, stars: 7500, voyage: 7600, about: 4800 };
+  const lengths = { bell: 5200, stars: 7500, voyage: 7600, about: 4800, market: 4300 };
   const intros = d.querySelectorAll("[data-intro]");
   intros.forEach((box) => {
     let timer;

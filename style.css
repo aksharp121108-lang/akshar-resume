@@ -2510,6 +2510,159 @@ body {
   color: var(--muted);
 }
 
+/* "Market & Mindset" intro (experience page): navy and brushed copper */
+.market {
+  --navy: #0a1428;
+  --copper: #c27c45;
+  --copper-lt: #efb88a;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 42%, #16284a 0%, var(--navy) 62%, #050a15 100%);
+  animation: mk-out 0.7s 3.6s var(--ease) forwards;
+}
+.mk-globe {
+  position: absolute;
+  width: min(150vmin, 1200px);
+}
+
+.mk-earth {
+  position: absolute;
+  width: min(96vmin, 780px);
+  height: auto;
+  opacity: 0;
+  animation: mk-globe-in 1.6s 0.1s var(--ease) forwards;
+}
+.mk-orbit {
+  transform-origin: 200px 150px;
+  transform: rotate(-16deg);
+}
+.mk-ring,
+.mk-comet {
+  fill: none;
+  stroke: var(--copper);
+  stroke-width: 2.4;
+  filter: drop-shadow(0 0 5px var(--copper));
+}
+.mk-ring.thin {
+  stroke-width: 0.8;
+  opacity: 0.7;
+}
+.mk-comet {
+  stroke: var(--copper-lt);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-dasharray: 14 86;
+  animation: mk-run 3.4s linear infinite;
+}
+.mk-sparks {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, var(--copper-lt) 0 1px, transparent 1.6px) 0 0 / 130px 110px,
+    radial-gradient(circle, var(--copper) 0 1.2px, transparent 2px) 40px 60px / 170px 150px;
+  opacity: 0;
+  animation:
+    mk-spark-in 2s 0.4s forwards,
+    mk-float 10s linear infinite;
+}
+.mk-text {
+  position: relative;
+  padding: 0 var(--edge);
+  text-align: center;
+}
+.mk-head {
+  margin: 0;
+  color: var(--copper-lt);
+  font: 500 clamp(2rem, 7vw, 4.6rem) / 1.1 var(--head);
+  text-transform: uppercase;
+  text-shadow: 0 2px 30px #0a1428;
+  opacity: 0;
+  animation: mk-head 1.6s 0.5s var(--ease) forwards;
+}
+.mk-head::before {
+  display: none;
+}
+.mk-sub {
+  max-width: 34ch;
+  margin: var(--s2) auto 0;
+  color: #e6d3c0;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  text-shadow: 0 2px 20px #0a1428;
+  opacity: 0;
+  animation: mk-sub 1.2s 2s var(--ease) forwards;
+}
+.market .skip-intro {
+  border-color: var(--copper);
+  color: var(--copper-lt);
+  z-index: 3;
+}
+.market .skip-intro:hover,
+.market .skip-intro:focus-visible {
+  background: var(--copper);
+  color: var(--navy);
+}
+@keyframes mk-globe-in {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mk-run {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+@keyframes mk-spark-in {
+  to {
+    opacity: 0.35;
+  }
+}
+@keyframes mk-float {
+  to {
+    background-position:
+      60px -110px,
+      -20px -90px;
+  }
+}
+@keyframes mk-head {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+    letter-spacing: 0.04em;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    letter-spacing: 0.1em;
+  }
+}
+@keyframes mk-sub {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes mk-out {
+  to {
+    opacity: 0;
+    transform: translateY(-3%);
+    visibility: hidden;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .market {
+    display: none;
+  }
+}
+
 /* footer button that turns the intros on or off */
 .foot-btn {
   min-height: 44px;
@@ -2538,3 +2691,93 @@ body {
 .intro-skipped .scroll-in {
   animation: none;
 }
+
+/* values that used to be inline styles (animation delays, positions) */
+.v1 { --d: 0s; }
+.v2 { --d: 0.4s; }
+.v3 { --d: 0.8s; }
+.v4 { --d: 1.2s; }
+.v5 { --d: 1.6s; }
+.v6 { --d: 2s; }
+.v7 { --d: 2.4s; }
+.v8 { color: #d4af37; }
+.v9 { --t: 2.05s; }
+.v10 { --t: 2.3s; }
+.v11 { --a: 3deg; --h: 43px; --w: 11px; --r: 49vmin; --d: 2.22s; --c: #3fbf6a; }
+.v12 { --a: 15deg; --h: 32px; --w: 11px; --r: 28vmin; --d: 1.92s; --c: #3fbf6a; }
+.v13 { --a: 27deg; --h: 36px; --w: 11px; --r: 47vmin; --d: 1.92s; --c: #3fbf6a; }
+.v14 { --a: 36deg; --h: 20px; --w: 7px; --r: 39vmin; --d: 2.17s; --c: #d4af37; }
+.v15 { --a: 44deg; --h: 35px; --w: 10px; --r: 52vmin; --d: 2.03s; --c: #d4af37; }
+.v16 { --a: 58deg; --h: 35px; --w: 7px; --r: 48vmin; --d: 2.06s; --c: #3fbf6a; }
+.v17 { --a: 68deg; --h: 22px; --w: 8px; --r: 41vmin; --d: 1.86s; --c: #3fbf6a; }
+.v18 { --a: 85deg; --h: 30px; --w: 11px; --r: 48vmin; --d: 1.93s; --c: #3fbf6a; }
+.v19 { --a: 96deg; --h: 31px; --w: 7px; --r: 43vmin; --d: 1.88s; --c: #d4af37; }
+.v20 { --a: 108deg; --h: 29px; --w: 11px; --r: 51vmin; --d: 2.19s; --c: #d4af37; }
+.v21 { --a: 120deg; --h: 26px; --w: 8px; --r: 38vmin; --d: 1.97s; --c: #3fbf6a; }
+.v22 { --a: 129deg; --h: 28px; --w: 7px; --r: 49vmin; --d: 1.97s; --c: #3fbf6a; }
+.v23 { --a: 140deg; --h: 43px; --w: 7px; --r: 28vmin; --d: 1.93s; --c: #3fbf6a; }
+.v24 { --a: 159deg; --h: 28px; --w: 10px; --r: 35vmin; --d: 1.88s; --c: #d4af37; }
+.v25 { --a: 167deg; --h: 40px; --w: 9px; --r: 32vmin; --d: 1.88s; --c: #3fbf6a; }
+.v26 { --a: 176deg; --h: 29px; --w: 7px; --r: 26vmin; --d: 1.95s; --c: #3fbf6a; }
+.v27 { --a: 188deg; --h: 17px; --w: 10px; --r: 47vmin; --d: 2.04s; --c: #d4af37; }
+.v28 { --a: 208deg; --h: 22px; --w: 10px; --r: 38vmin; --d: 1.93s; --c: #d4af37; }
+.v29 { --a: 214deg; --h: 29px; --w: 10px; --r: 25vmin; --d: 2.01s; --c: #3fbf6a; }
+.v30 { --a: 224deg; --h: 24px; --w: 11px; --r: 31vmin; --d: 2.25s; --c: #3fbf6a; }
+.v31 { --a: 239deg; --h: 21px; --w: 10px; --r: 49vmin; --d: 2.09s; --c: #3fbf6a; }
+.v32 { --a: 249deg; --h: 17px; --w: 8px; --r: 28vmin; --d: 2.03s; --c: #3fbf6a; }
+.v33 { --a: 265deg; --h: 42px; --w: 9px; --r: 34vmin; --d: 1.88s; --c: #3fbf6a; }
+.v34 { --a: 275deg; --h: 34px; --w: 8px; --r: 22vmin; --d: 2.09s; --c: #3fbf6a; }
+.v35 { --a: 291deg; --h: 20px; --w: 11px; --r: 37vmin; --d: 2.18s; --c: #3fbf6a; }
+.v36 { --a: 302deg; --h: 21px; --w: 8px; --r: 31vmin; --d: 2.21s; --c: #6fe08f; }
+.v37 { --a: 311deg; --h: 39px; --w: 8px; --r: 27vmin; --d: 2.15s; --c: #3fbf6a; }
+.v38 { --a: 323deg; --h: 37px; --w: 10px; --r: 50vmin; --d: 2.04s; --c: #3fbf6a; }
+.v39 { --a: 338deg; --h: 17px; --w: 7px; --r: 25vmin; --d: 1.87s; --c: #3fbf6a; }
+.v40 { --a: 347deg; --h: 39px; --w: 10px; --r: 30vmin; --d: 2.02s; --c: #3fbf6a; }
+.v41 { --t: 2.45s; }
+.v42 { --t: 2.63s; }
+.v43 { --t: 2.81s; }
+.v44 { --t: 2.99s; }
+.v45 { --t: 3.17s; }
+.v46 { --t: 3.35s; }
+.v47 { --t: 3.53s; }
+.v48 { --i: 0; }
+.v49 { --i: 1; }
+.v50 { --i: 2; }
+.v51 { --i: 3; }
+.v52 { --i: 4; }
+.v53 { --i: 5; }
+.v54 { --i: 6; }
+.v55 { --i: 7; }
+.v56 { --d: 0.3s; }
+.v57 { --d: 0.7s; }
+.v58 { --d: 1s; }
+.v59 { --d: 1.4s; }
+.v60 { --d: 1.8s; }
+.v61 { --d: 2.1s; }
+.v62 { --d: 2.8s; }
+.v63 { --t: 1.7s; }
+.v64 { --t: 2.4s; }
+.v65 { --t: 3.1s; }
+.v66 { --t: 3.8s; }
+.v67 { --t: 3.95s; }
+.v68 { --t: 4.1s; }
+.v69 { --t: 4.25s; }
+.v70 { --t: 4.4s; }
+.v71 { --i: 8; }
+.v72 { --i: 9; }
+.v73 { --i: 10; }
+.v74 { --i: 11; }
+.v75 { --i: 12; }
+.v76 { --i: 13; }
+.v77 { --i: 14; }
+.v78 { --i: 15; }
+.v79 { --i: 16; }
+.v80 { --i: 17; }
+.v81 { --x: 8%; --y: 72%; --size: 3px; --duration: 5.5s; --delay: -1s; --drift: 18px; }
+.v82 { --x: 15%; --y: 42%; --size: 2px; --duration: 7s; --delay: -3s; --drift: -12px; }
+.v83 { --x: 27%; --y: 70%; --size: 4px; --duration: 6.2s; --delay: -2.2s; --drift: 22px; }
+.v84 { --x: 38%; --y: 30%; --size: 2px; --duration: 8s; --delay: -4s; --drift: -18px; }
+.v85 { --x: 56%; --y: 26%; --size: 3px; --duration: 6.8s; --delay: -1.8s; --drift: 14px; }
+.v86 { --x: 72%; --y: 62%; --size: 2px; --duration: 5.8s; --delay: -2.8s; --drift: -14px; }
+.v87 { --x: 84%; --y: 34%; --size: 4px; --duration: 7.4s; --delay: -4.8s; --drift: 20px; }
+.v88 { --x: 93%; --y: 74%; --size: 2px; --duration: 6.4s; --delay: -0.6s; --drift: -16px; }
