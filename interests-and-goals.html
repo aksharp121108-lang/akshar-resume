@@ -189,57 +189,9 @@
 
     <main id="main">
       <div class="voyage" data-intro="voyage" aria-hidden="true">
-        <svg class="v-scene" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#1b2a4a" />
-              <stop offset=".45" stop-color="#8a4a3a" />
-              <stop offset=".78" stop-color="#e9a04a" />
-              <stop offset="1" stop-color="#f6c76a" />
-            </linearGradient>
-            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#0f4a78" />
-              <stop offset="1" stop-color="#051a30" />
-            </linearGradient>
-            <radialGradient id="sun">
-              <stop offset="0" stop-color="#fff3c4" />
-              <stop offset=".4" stop-color="#f5b94b" />
-              <stop offset="1" stop-color="#f5b94b" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-          <rect width="1200" height="430" fill="url(#sky)" />
-          <circle class="sun" cx="820" cy="400" r="160" fill="url(#sun)" />
-          <path
-            d="M560 430 640 385 690 405 770 350 840 398 910 362 970 410 1060 338 1120 392 1200 360V430Z"
-            fill="#0b1a1c"
-          />
-          <rect y="430" width="1200" height="270" fill="url(#sea)" />
-          <rect x="790" y="430" width="60" height="270" fill="#f5b94b" opacity=".22" />
-          <g class="swell" fill="none" stroke="#9cc9ef" stroke-opacity=".3">
-            <path
-              d="M0 470Q60 458 120 470T240 470T360 470T480 470T600 470T720 470T840 470T960 470T1080 470T1200 470"
-            />
-            <path d="M0 520Q80 506 160 520T320 520T480 520T640 520T800 520T960 520T1120 520T1280 520" />
-            <path d="M0 590Q100 572 200 590T400 590T600 590T800 590T1000 590T1200 590" />
-          </g>
-          <path
-            d="M0 700V565Q120 560 230 522Q300 498 330 440Q322 508 384 562L430 700Z"
-            fill="#0a1410"
-            stroke="#d4af37"
-            stroke-opacity=".6"
-            stroke-width="2"
-          />
-          <g transform="translate(215 332)" fill="#0a1410" stroke="#f5b94b" stroke-opacity=".5">
-            <path d="M40 38q0-22 20-22t20 22v6H40z" />
-            <path d="M44 18q16-20 34-2-14-6-34 2z" />
-            <rect x="52" y="44" width="16" height="10" />
-            <path d="M28 56h64l10 130H18z" />
-            <circle cx="60" cy="112" r="30" stroke="#d4af37" stroke-opacity=".7" stroke-width="2" />
-            <path d="M100 6V186" stroke="#d4af37" stroke-opacity=".7" stroke-width="2" />
-            <path d="M100 0 95 12h10z" />
-          </g>
-        </svg>
-        <p class="v-title" data-last>THE ODYSSEY BEGINS</p>
+        <img class="v-bg" src="odyssey.jpg" alt="" />
+        <img class="v-photo" src="odyssey.jpg" width="1280" height="440" alt="" data-last />
+        <i class="v-dust"></i>
         <button class="skip-intro" type="button">Skip intro</button>
       </div>
       <section>
@@ -382,7 +334,7 @@
               <h3>Start my BBA and my exam preparation</h3>
               <p>
                 I began the BBA in Digital Business and Entrepreneurship at IIM Bangalore, and I started
-                preparing for CFA Level 1 and the CAT from my first term.
+                preparing for CFA Level 1 from my first term.
               </p>
             </li>
             <li>
@@ -410,11 +362,6 @@
               </p>
             </li>
             <li>
-              <span class="when">November 2028</span>
-              <h3>Take the CAT</h3>
-              <p>I plan to take the CAT in my final year of the BBA.</p>
-            </li>
-            <li>
               <span class="when">2029</span>
               <h3>Finish my BBA</h3>
               <p>
@@ -431,8 +378,7 @@
           <h2>How I work towards them</h2>
           <p>
             A goal only matters if there is time for it in an ordinary day, so I try to keep a rhythm. I am
-            focusing on the CFA and the CAT, and I have decided not to take on FRM so my attention stays on
-            them.
+            focusing on the CFA, and I have decided not to take on FRM so my attention stays on it.
           </p>
           <div class="grid reveal">
             <article class="card">
