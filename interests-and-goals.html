@@ -188,10 +188,46 @@
     </header>
 
     <main id="main">
-      <div class="voyage" data-intro="voyage" aria-hidden="true">
-        <img class="v-bg" src="odyssey.jpg" alt="" />
-        <img class="v-photo" src="odyssey.jpg" width="1280" height="440" alt="" data-last />
-        <i class="v-dust"></i>
+      <div class="voyage" data-intro="voyage">
+        <img class="v-bg" src="odyssey.jpg" alt="" aria-hidden="true" />
+        <img class="v-photo" src="odyssey.jpg" width="1280" height="440" alt="" aria-hidden="true" />
+        <i class="v-dust" aria-hidden="true"></i>
+        <svg class="v-constellations" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+          <g fill="none">
+            <line x1="95" y1="270" x2="220" y2="200" />
+            <line x1="220" y1="200" x2="365" y2="245" />
+            <line x1="365" y1="245" x2="470" y2="155" />
+            <line x1="1115" y1="175" x2="1245" y2="235" />
+            <line x1="1245" y1="235" x2="1385" y2="150" />
+            <line x1="1385" y1="150" x2="1510" y2="235" />
+            <line x1="1160" y1="650" x2="1300" y2="575" />
+            <line x1="1300" y1="575" x2="1460" y2="650" />
+          </g>
+          <g>
+            <circle cx="95" cy="270" r="3" /><circle cx="220" cy="200" r="4" />
+            <circle cx="365" cy="245" r="2.5" /><circle cx="470" cy="155" r="3" />
+            <circle cx="1115" cy="175" r="3" /><circle cx="1245" cy="235" r="2.5" />
+            <circle cx="1385" cy="150" r="4" /><circle cx="1510" cy="235" r="3" />
+            <circle cx="1160" cy="650" r="2.5" /><circle cx="1300" cy="575" r="3" />
+            <circle cx="1460" cy="650" r="2.5" />
+          </g>
+        </svg>
+        <div class="v-particles" aria-hidden="true">
+          <i style="--x: 8%; --y: 72%; --size: 3px; --duration: 5.5s; --delay: -1s; --drift: 18px"></i>
+          <i style="--x: 15%; --y: 42%; --size: 2px; --duration: 7s; --delay: -3s; --drift: -12px"></i>
+          <i style="--x: 27%; --y: 70%; --size: 4px; --duration: 6.2s; --delay: -2.2s; --drift: 22px"></i>
+          <i style="--x: 38%; --y: 30%; --size: 2px; --duration: 8s; --delay: -4s; --drift: -18px"></i>
+          <i style="--x: 56%; --y: 26%; --size: 3px; --duration: 6.8s; --delay: -1.8s; --drift: 14px"></i>
+          <i style="--x: 72%; --y: 62%; --size: 2px; --duration: 5.8s; --delay: -2.8s; --drift: -14px"></i>
+          <i style="--x: 84%; --y: 34%; --size: 4px; --duration: 7.4s; --delay: -4.8s; --drift: 20px"></i>
+          <i style="--x: 93%; --y: 74%; --size: 2px; --duration: 6.4s; --delay: -0.6s; --drift: -16px"></i>
+        </div>
+        <div class="v-copy">
+          <p class="v-kicker">Akshar's Journey &middot; Interests and Goals</p>
+          <h2 class="v-title">The Odyssey Begins</h2>
+          <p class="v-subtitle">A quiet horizon, a steady course, and the next chapter waiting beyond the tide.</p>
+        </div>
+        <p class="v-progress">Charting the next horizon</p>
         <button class="skip-intro" type="button">Skip intro</button>
       </div>
       <section>

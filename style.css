@@ -1171,16 +1171,7 @@ a.card:hover::after {
 
 /* stock-style ticker at the top of every page */
 .tape {
-  overflow: hidden;
-  border-bottom: 1px solid #d4af3744;
-  background: #0b190b;
-  font:
-    600 0.78rem/1 ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Consolas,
-    monospace;
-  letter-spacing: 0.04em;
+  display: none !important;
 }
 .tape div {
   display: flex;
@@ -2191,64 +2182,250 @@ body {
   }
 }
 
-/* odyssey voyage intro (interests and goals pages) */
+/* full-page cinematic voyage intro (interests and goals page) */
 .voyage {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 9999;
+  isolation: isolate;
   overflow: hidden;
   background: #06120d;
-  animation:
-    dissolve 1s 4.2s forwards,
-    gone 0s 5.2s forwards;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 1.2s;
 }
-.v-bg {
+.voyage::before,
+.voyage::after {
   position: absolute;
-  inset: -6%;
-  width: 112%;
-  height: 112%;
-  object-fit: cover;
-  filter: blur(26px) brightness(0.55);
-  opacity: 0;
-  animation: fadein 1s forwards;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
 }
+.voyage::before {
+  inset: 0;
+  background:
+    linear-gradient(180deg, #06120d55 0%, transparent 28%, transparent 65%, #06120dd9 100%),
+    linear-gradient(90deg, #06120d99 0%, transparent 30%, transparent 70%, #06120d66 100%);
+}
+.voyage::after {
+  inset: 10px;
+  border: 1px solid #d4af3733;
+  box-shadow: inset 0 0 80px #06120d66;
+}
+.v-bg,
 .v-photo {
   position: absolute;
-  top: 50%;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 100%;
+  max-width: none;
   object-fit: cover;
-  transform: translateY(-50%) scale(1);
-  opacity: 0;
-  animation:
-    fadein 1.2s forwards,
-    push 5.2s linear forwards;
+  object-position: center;
+}
+.v-bg {
+  filter: blur(24px) brightness(0.48) saturate(0.8);
+  transform: scale(1.08);
+  opacity: 0.9;
+}
+.v-photo {
+  z-index: 1;
+  filter: saturate(0.9) contrast(1.03) brightness(0.82);
+  transform: scale(1.02);
+  animation: voyageZoom 9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .v-dust {
   position: absolute;
+  z-index: 3;
   inset: 0;
+  pointer-events: none;
   background:
     radial-gradient(circle, #f6d98a 0 1.5px, transparent 2px) 0 0 / 90px 120px,
-    radial-gradient(circle, #f6d98acc 0 1px, transparent 1.5px) 30px 50px / 60px 80px,
-    radial-gradient(ellipse at 50% 55%, transparent 40%, #000000aa 100%);
+    radial-gradient(circle, #f6d98acc 0 1px, transparent 1.5px) 30px 50px / 60px 80px;
+  mix-blend-mode: screen;
   opacity: 0;
   animation:
-    fadein 1.5s 0.6s forwards,
-    dust 5s linear forwards;
+    fadein 1.6s 0.45s forwards,
+    dust 9s linear infinite;
+}
+.v-constellations {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadein 1.4s 0.7s forwards;
+}
+.v-constellations line {
+  stroke: #f2d98c;
+  stroke-width: 0.8;
+  stroke-opacity: 0.62;
+  stroke-dasharray: 7 11;
+  animation: constellationDrift 8s ease-in-out infinite alternate;
+}
+.v-constellations circle {
+  fill: #fff1b3;
+  filter: drop-shadow(0 0 5px #d4af37);
+  animation: starPulse 2.8s ease-in-out infinite alternate;
+}
+.v-particles {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+.v-particles i {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff0b0;
+  box-shadow: 0 0 12px 2px #d4af37aa;
+  opacity: 0;
+  animation: particleFloat var(--duration) var(--delay) ease-in-out infinite;
+}
+.v-copy {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: min(92vw, 980px);
+  transform: translate(-50%, -36%);
+  text-align: center;
+  color: #fff1c7;
+}
+.v-kicker,
+.v-subtitle,
+.v-progress {
+  font-family: var(--body);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.v-kicker {
+  margin: 0 0 20px;
+  color: #ecd58a;
+  font-size: clamp(0.65rem, 1.25vw, 0.9rem);
+  opacity: 0;
+  animation: voyageRise 1s 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.v-title {
+  margin: 0;
+  color: #f6df9f;
+  font-family: var(--head);
+  font-size: clamp(2.2rem, 7.5vw, 7rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: 0.05em;
+  text-shadow:
+    0 0 8px #d4af37cc,
+    0 0 34px #d4af3788,
+    0 3px 18px #06120ddd;
+  opacity: 0;
+  animation: titleReveal 2.2s 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.v-subtitle {
+  max-width: 58ch;
+  margin: 24px auto 0;
+  color: #f7eac8cc;
+  font-size: clamp(0.65rem, 1.25vw, 0.85rem);
+  line-height: 1.8;
+  opacity: 0;
+  animation: voyageRise 1.2s 1.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.v-progress {
+  position: absolute;
+  z-index: 5;
+  left: var(--edge);
+  bottom: var(--edge);
+  margin: 0;
+  color: #f6df9fbb;
+  font-size: 0.68rem;
+  opacity: 0;
+  animation: voyageRise 1s 1.9s forwards;
+}
+.voyage .skip-intro {
+  z-index: 6;
+  right: var(--edge);
+  bottom: var(--edge);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 18px 0 20px;
+  border: 1px solid #f0d984aa;
+  border-radius: 999px;
+  background: #132a1388;
+  box-shadow: inset 0 1px #fff5c433, 0 8px 30px #06120d88;
+  backdrop-filter: blur(12px);
+  color: #f8e5a1;
+  font: 600 0.85rem var(--body);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+.voyage .skip-intro::after {
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  content: "";
+  transform: rotate(45deg);
+}
+.voyage .skip-intro:hover,
+.voyage .skip-intro:focus-visible {
+  background: #d4af37ee;
+  box-shadow: 0 0 28px #d4af37aa, 0 8px 30px #06120d88;
+  color: #132a13;
+  transform: translateY(-2px);
+}
+.voyage.intro-done {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.035);
+}
+@keyframes voyageZoom {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.12); }
+}
+@keyframes voyageRise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes titleReveal {
+  from { opacity: 0; letter-spacing: 0.48em; transform: translateY(16px); }
+  to { opacity: 1; letter-spacing: 0.08em; transform: translateY(0); }
+}
+@keyframes constellationDrift {
+  from { transform: translate3d(-5px, 3px, 0); opacity: 0.45; }
+  to { transform: translate3d(5px, -3px, 0); opacity: 0.9; }
+}
+@keyframes starPulse {
+  from { opacity: 0.42; }
+  to { opacity: 1; }
+}
+@keyframes particleFloat {
+  0% { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.7); }
+  25% { opacity: 0.8; }
+  75% { opacity: 0.45; }
+  100% { opacity: 0; transform: translate3d(var(--drift), -72px, 0) scale(1.15); }
 }
 @keyframes dust {
   to {
     background-position:
       40px -240px,
-      -30px -160px,
-      0 0;
-  }
-}
-@keyframes push {
-  to {
-    transform: translateY(-50%) scale(1.08);
+      -30px -160px;
   }
 }
 
@@ -2306,9 +2483,16 @@ body {
 }
 
 /* intros can be skipped, finished or switched off */
-[data-intro].intro-done,
-.no-intro [data-intro] {
+[data-intro].intro-done:not(.voyage),
+.no-intro [data-intro]:not(.voyage) {
   display: none;
+}
+.no-intro .voyage,
+.voyage.intro-done {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.035);
 }
 .no-intro .scroll-in,
 .intro-skipped .scroll-in {

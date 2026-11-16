@@ -126,23 +126,20 @@
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // intros play every time the page opens. Tap anywhere or press Skip to end one.
-  // The timer starts when the first animation starts, so it also works for hidden pages.
-  const lengths = { bell: 5200, stars: 7500, voyage: 5400, about: 4800 };
+  // Intros play once per page load. Only the visible Skip control ends them early.
+  const lengths = { bell: 5200, stars: 7500, voyage: 7600, about: 4800 };
   const intros = d.querySelectorAll("[data-intro]");
   intros.forEach((box) => {
-    const finish = () => box.classList.add("intro-done");
-    box.addEventListener(
-      "animationstart",
-      () => {
-        setTimeout(finish, lengths[box.dataset.intro] || 6000);
-      },
-      { once: true },
-    );
-    box.addEventListener("click", () => {
-      box.closest("main").classList.add("intro-skipped");
-      finish();
-    });
+    let timer;
+    const finish = () => {
+      if (box.classList.contains("intro-done")) return;
+      clearTimeout(timer);
+      box.closest("main")?.classList.add("intro-skipped");
+      box.classList.add("intro-done");
+    };
+    timer = setTimeout(finish, lengths[box.dataset.intro] || 6000);
+    const skip = box.querySelector(".skip-intro");
+    if (skip) skip.addEventListener("click", finish);
   });
 
   // footer button to switch the intros off or on
