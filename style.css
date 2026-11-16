@@ -333,13 +333,10 @@ section {
   animation: cycle 12s infinite backwards;
 }
 .rot b:nth-child(2) {
-  animation-delay: 3s;
+  animation-delay: 4s;
 }
 .rot b:nth-child(3) {
-  animation-delay: 6s;
-}
-.rot b:nth-child(4) {
-  animation-delay: 9s;
+  animation-delay: 8s;
 }
 
 /* photo fills the box exactly */
@@ -1005,12 +1002,12 @@ a.card:hover::after {
     opacity: 0;
     transform: translateY(8px);
   }
-  4%,
-  22% {
+  3%,
+  28% {
     opacity: 1;
     transform: none;
   }
-  26%,
+  33%,
   100% {
     opacity: 0;
     transform: translateY(-8px);
