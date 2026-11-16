@@ -170,7 +170,7 @@
       const box = d.createElement("div");
       box.className = "initials";
       box.setAttribute("role", "img");
-      box.setAttribute("aria-label", "Portrait placeholder");
+      box.setAttribute("aria-label", "Portrait unavailable");
       box.textContent = "AP";
       img.replaceWith(box);
     }

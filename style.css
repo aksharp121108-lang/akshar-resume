@@ -771,6 +771,26 @@ details[open] .more {
   font-size: 0.95rem;
   line-height: 1.5;
 }
+#resume .resume-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s3);
+}
+#resume .resume-header > div {
+  min-width: 0;
+  flex: 1;
+}
+#resume .resume-photo {
+  flex: 0 0 112px;
+  width: 112px;
+  height: 132px;
+  border: 1px solid #c9c4b9;
+  border-radius: 2px;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.95);
+}
 #resume h2 {
   margin: 0 0 4px;
   color: var(--ink);
@@ -794,6 +814,19 @@ details[open] .more {
 }
 #resume a {
   color: var(--ink);
+}
+@media (max-width: 699px) {
+  #resume .resume-header {
+    gap: 16px;
+  }
+  #resume .resume-photo {
+    flex-basis: 88px;
+    width: 88px;
+    height: 104px;
+  }
+  #resume h2 {
+    font-size: 1.45rem;
+  }
 }
 
 /* footer */
@@ -1758,6 +1791,14 @@ body {
     padding: 0;
     font-size: 10pt;
     line-height: 1.35;
+  }
+  #resume .resume-header {
+    gap: 16pt;
+  }
+  #resume .resume-photo {
+    flex-basis: 86pt;
+    width: 86pt;
+    height: 104pt;
   }
   #resume h2 {
     font-size: 20pt;
